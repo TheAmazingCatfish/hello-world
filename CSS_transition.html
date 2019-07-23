@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS transition</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			#div_x{
+				position: fixed;
+				left: 50%;
+				top: 45%;
+				transform: translate(-50%, -55%);
+			}
+			
+			#span_x {
+				font-size: 26px;
+				transition: color 0.5s;
+			}
+			
+			#hr_x {
+				margin-bottom: 24px;
+				width: 0;
+				height: 4px;
+				border: none;
+				background-color: royalblue;
+				color: royalblue;
+				transition: all 0.5s;
+			}
+			
+			#button_switch_styles {
+				border: 1px solid black;
+				border-radius: 2px;
+				padding: 4px 14px;
+				background-color: white;
+				font-size: 20px;
+				cursor: pointer;
+			}
+			
+			#button_switch_styles:hover {
+				background-color: royalblue;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div_x">
+			<span id="span_x">前端学院</span>
+			<hr id="hr_x" />
+			<button id="button_switch_styles" type="button" onclick="switchStyles()">切换样式</button>
+		</div>
+
+		<script>
+			window.onload = function() {
+				document.getElementById('span_x').style.color = 'black';
+			}
+
+			function switchStyles() {
+				var spanX = document.getElementById('span_x');
+				var hrX = document.getElementById('hr_x');
+				if (spanX.style.color == 'black') {
+					spanX.style.color = 'royalblue';
+					hrX.style.width = '110px';
+				} else {
+					spanX.style.color = 'black';
+					hrX.style.width = '0';
+				}
+			}
+		</script>
+	</body>
+</html>
