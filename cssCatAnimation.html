@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <title>纯 CSS 实现猫笑起来的动画</title>
+        <style type="text/css">
+            body {
+                background-color: #d69a44;
+            }
+            /* face */
+            .face {
+                position: absolute;
+                left: 50%;
+                top:40px;
+                z-index: 10;
+                margin-left: -175px;
+                width: 350px;
+                height: 250px;
+                border: 2px solid #3f200b;
+                border-radius: 50% 50% 30% 30%;
+                background: #fbf8f1;
+                overflow: hidden;
+            }
+            /* ear */
+            .ear-wrap {
+                position: absolute;
+                width: 300px;
+                left: 50%;
+                margin-left: -150px;
+                /*   top: 100px; */
+            }
+            .ear-wrap{
+                position: absolute;
+                left: 50%;
+                margin-top: 20px;
+                margin-left: -150px;
+                width: 300px;
+            }
+            .ear {
+                position: absolute;
+                width: 80px;
+                height: 100px;
+                border: 2px solid #000;
+                border-radius: 100% 10% 50% 0% ;
+                background: #fbf8f1;
+				transition: all 0.5s ease-out;
+            }
+            .ear-wrap .right {
+                left: auto;
+                right: 0;
+                border-radius: 10% 100% 0% 50%;
+                background: #f1ac2b;
+            }
+            /* 头发 */
+            .hair {
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                left: 50%;
+                margin-left: 50px;
+                margin-top: -40px;
+                background: #f3b32e;
+                border-radius: 50%;
+            }
+            /* 眼睛 */
+            .eye-wrap {
+                position: absolute;
+                left: 50%;
+                top: 90px;
+                margin-left: -140px;
+                width: 280px;
+                height: 70px;
+                overflow: hidden;
+            }
+            .eye {
+                position: absolute;
+                height: 100px;
+                width: 100px;
+            }
+            .eye-circle {
+                box-sizing: border-box;
+                position: absolute;
+                width: 100px;
+                height: 80px;
+                border: 2px solid #482507;
+                border-radius: 50% 50% 40% 40%;
+                background: #fff;
+                overflow: hidden;
+            }
+            .eye-core {
+                position: absolute;
+                left: 50%;
+                /* margin: 0 auto; */
+                margin-left: -23px;
+                height: 55px;
+                width: 46px;
+                border-radius: 50%;
+                background: #000;
+				transition: all 0.5s ease-out;
+            }
+            .lower-eyelid {
+                position: absolute;
+                margin-top: 48px;
+                height: 50px;
+                width: 100px;
+                border-top: 2px solid #46240b;
+                border-radius: 40% 40% 50% 50%;
+                background: linear-gradient(to top, #fbf8f1 0%, #f6f7f2 100%);
+				transition: all 0.5s ease-out;
+            }
+            .eye-wrap .right {
+                left: auto;
+                right: 0px;
+            }
+            .blush {
+                position: absolute;
+                left: 18px;
+                top: 45px;
+                /*top: 64px;*/
+                height: 20px;
+                width: 70px;
+                border-radius: 50%;
+                background: lightpink;
+                opacity: 0.0;
+				transition: all 0.5s ease-out;
+            }
+            /* 鼻子 */
+            .nose {
+                position: absolute;
+                left: 50%;
+                top: 154px;
+                margin-left: -10px;
+                width: 20px;
+                height: 10px;
+                border-bottom: 8px solid #000;
+                border-radius: 50%;
+            }
+            /* 嘴巴 */
+            .mouth-wrap {
+                position: absolute;
+                left: 50%;
+                top: 168px;
+                width: 80px;
+                margin-left: -40px;
+                height: 20px;
+                overflow: hidden;
+            }
+            .mouth {
+                position: absolute;
+                left: 0;
+                margin-top: -26px;
+                width: 40px;
+                height: 40px;
+                border-right: 4px solid #000;
+                border-bottom: 4px solid #000;
+                border-radius: 0% 40% 50% 20%;
+				transition: all 0.5s ease-out;
+            }
+            .mouth-wrap .right {
+                position: absolute;
+                left: auto;
+                right: 0;
+                border-right: none;
+                border-bottom: 4px solid #000;
+                border-left: 4px solid #000;
+                border-radius: 40% 0% 20% 50%;
+            }
+            /*鼠标hover样式 写在这里*/
+			.face:hover + div .ear.left {
+				transform: rotate(-25deg);
+				transform-origin: bottom;
+			}
+			
+			.face:hover + div .ear.right {
+				transform: rotate(25deg);
+				transform-origin: bottom;
+			}
+			
+			.face:hover .blush {
+				opacity: 1;
+			}
+			
+			.face:hover .eye-core {
+				transform: scaleX(0.9);
+			}
+			
+			.face:hover .lower-eyelid {
+				transform: translateY(-15px);
+			}
+			
+			.face:hover .mouth {
+				border-radius: 50%;
+			}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- 脸 -->
+            <div class="face">
+                <!-- 头发 -->
+                <div class="hair"></div>
+                <!-- 眼睛 -->
+                <div class="eye-wrap">
+                    <div class="eye left">
+                        <div class="eye-circle">
+                            <div class="eye-core"></div>
+                        </div>
+                        <div class="lower-eyelid"></div>
+                        <div class="blush"></div>
+                    </div>
+                    <div class="eye right">
+                        <div class="eye-circle">
+                            <div class="eye-core"></div>
+                        </div>
+                        <div class="lower-eyelid"></div>
+                        <div class="blush"></div>
+                    </div>
+                </div>
+                <!-- 鼻子 -->
+                <div class="nose"></div>
+                <!-- 嘴巴 -->
+                <div class="mouth-wrap">
+                    <!-- <div class="mouth-top"></div> -->
+                    <div class="mouth left"></div>
+                    <div class="mouth right"></div>
+                </div>
+            </div>
+            <!-- 耳朵 -->
+            <div class="ear-wrap">
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+            </div>
+        </div>
+    </body>
+</html>
