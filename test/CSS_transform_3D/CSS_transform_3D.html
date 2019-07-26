@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS Transform 3D</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			.stage {
+				position: fixed;
+				top: 40%;
+				transform: translateY(-50%);
+				width: 100%;
+				height: 350px;
+				perspective: 1920px;
+			}
+			
+			#card_x {
+				margin: auto;
+				width: 250px;
+				height: 350px;
+				transform-style: preserve-3d;
+				backface-visibility: hidden;
+				transition: 0.5s;
+			}
+
+			#card_x:hover {
+				transform: rotateY(180deg);
+			}
+
+			#front {
+				position: absolute;
+				z-index: 1;
+			}
+
+			#back {
+				position: absolute;
+				z-index: -1;
+				transform: rotateY(180deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="stage">
+			<div id="card_x">
+				<img id="front" src="image/front.jpg" alt="front" />
+				<img id="back" src="image/back.jpg" alt="back" />
+			</div>
+		</div>
+	</body>
+</html>
